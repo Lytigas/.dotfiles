@@ -1,0 +1,7 @@
+[rerere]
+	enabled = true
+[user]
+	name = Josh Hejna
+	email = josh.hejna@gmail.com
+[credential]
+	helper = cache --timeout=1800
