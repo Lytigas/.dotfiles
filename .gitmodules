@@ -1,0 +1,3 @@
+[submodule "bash/components/prompt/liquidprompt"]
+	path = bash/components/prompt/liquidprompt
+	url = https://github.com/Lytigas/liquidprompt.git
