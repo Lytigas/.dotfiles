@@ -1,0 +1,8 @@
+{
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Monokai Dimmed",
+    "window.zoomLevel": 0,
+}
