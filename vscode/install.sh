@@ -8,15 +8,18 @@ command -v code || {
 }
 
 echo "Installing vscode extensions..."
+cmd="code --install-extension"
 
 # html
-code --install-extension formulahendry.auto-rename-tag
-code --install-extension formulahendry.auto-close-tag
+$cmd formulahendry.auto-rename-tag
+$cmd formulahendry.auto-close-tag
 # md
-code --install-extension DavidAnson.vscode-markdownlint
+$cmd DavidAnson.vscode-markdownlint
+# toml
+$cmd bungcip.better-toml
 # general
-code --install-extension streetsidesoftware.code-spell-checker
-code --install-extension robertohuertasm.vscode-icons
+$cmd streetsidesoftware.code-spell-checker
+$cmd robertohuertasm.vscode-icons
 
 echo "Symlinking vscode configs"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
