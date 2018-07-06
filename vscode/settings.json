@@ -1,14 +1,28 @@
 {
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
     "workbench.iconTheme": "vscode-icons",
     "workbench.colorTheme": "Monokai Dimmed",
     "window.zoomLevel": 0,
-    "cSpell.userWords": [
-        "canonicalize",
-        "serde",
-        "toml",
-        "wpilib"
-    ],
+
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+
+    "bracketPairColorizer.colorMode": "Consecutive",
+    "bracketPairColorizer.showBracketsInGutter": true,
+    "bracketPairColorizer.showHorizontalScopeLine": false,
+
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    "[rust]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "editor.wordWrapColumn": 80,
+        "editor.wordWrap": "wordWrapColumn",
+    },
+    "[markdown]": {
+        "editor.formatOnSave": true,
+        "editor.wordWrap": "on",
+        "editor.renderWhitespace": "all",
+        "editor.acceptSuggestionOnEnter": "off"
+    },
 }
