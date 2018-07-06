@@ -10,7 +10,9 @@
     "bracketPairColorizer.colorMode": "Consecutive",
     "bracketPairColorizer.showBracketsInGutter": true,
     "bracketPairColorizer.showHorizontalScopeLine": false,
-
+    
+    "workbench.editor.enablePreview": false,
+    
     "diffEditor.ignoreTrimWhitespace": false,
 
     "[rust]": {
