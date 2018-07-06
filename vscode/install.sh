@@ -18,7 +18,6 @@ $cmd DavidAnson.vscode-markdownlint
 # toml
 $cmd bungcip.better-toml
 # general
-$cmd streetsidesoftware.code-spell-checker
 $cmd robertohuertasm.vscode-icons
 
 echo "Symlinking vscode configs"
