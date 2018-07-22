@@ -2,24 +2,18 @@
     "workbench.iconTheme": "vscode-icons",
     "workbench.colorTheme": "Monokai Dimmed",
     "window.zoomLevel": 0,
-
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
 
-    "bracketPairColorizer.colorMode": "Consecutive",
-    "bracketPairColorizer.showBracketsInGutter": true,
-    "bracketPairColorizer.showHorizontalScopeLine": false,
-    
+    "editor.minimap.enabled": false,
     "workbench.editor.enablePreview": false,
-    
-    "diffEditor.ignoreTrimWhitespace": false,
 
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.formatOnSave": true,
     "[rust]": {
         "editor.formatOnSave": true,
         "editor.formatOnPaste": true,
-        "editor.wordWrapColumn": 80,
-        "editor.wordWrap": "wordWrapColumn",
     },
     "[markdown]": {
         "editor.formatOnSave": true,
