@@ -39,6 +39,7 @@ include_comp $bashrc prompt
 include_comp $profile include-bashrc
 include_comp $profile cargo
 include_comp $profile local-bin
+include_comp $profile python-bin
 
 cd ..
 

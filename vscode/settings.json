@@ -9,7 +9,6 @@
     "editor.minimap.enabled": false,
     "workbench.editor.enablePreview": false,
     "diffEditor.ignoreTrimWhitespace": false,
-    "editor.formatOnSave": true,
     "[rust]": {
         "editor.formatOnSave": true,
         "editor.formatOnPaste": true,
@@ -20,4 +19,5 @@
         "editor.renderWhitespace": "all",
         "editor.acceptSuggestionOnEnter": "off"
     },
+    "window.titleBarStyle": "custom"
 }
