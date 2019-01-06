@@ -26,6 +26,7 @@ cd components
 include_comp $bashrc etc-bashrc
 include_comp $bashrc local-bin
 include_comp $bashrc cargo
+include_comp $bashrc frc2019
 include_comp $bashrc exit-non-interactive
 include_comp $bashrc "history"
 include_comp $bashrc "shopt"
@@ -38,6 +39,7 @@ include_comp $bashrc prompt
 
 include_comp $profile include-bashrc
 include_comp $profile cargo
+include_comp $profile frc2019
 include_comp $profile local-bin
 include_comp $profile python-bin
 
