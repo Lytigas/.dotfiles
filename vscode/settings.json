@@ -19,5 +19,8 @@
         "editor.renderWhitespace": "all",
         "editor.acceptSuggestionOnEnter": "off"
     },
-    "window.titleBarStyle": "custom"
+    "window.titleBarStyle": "custom",
+    "breadcrumbs.enabled": true,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.hovers.currentLine.over": "line"
 }
