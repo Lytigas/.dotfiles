@@ -36,12 +36,14 @@ include_comp $bashrc completion
 include_comp $bashrc gcc-colors
 include_comp $bashrc lesspipe
 include_comp $bashrc prompt
+include_comp $bashrc autojump
 
 include_comp $profile include-bashrc
 include_comp $profile cargo
 include_comp $profile frc2019
 include_comp $profile local-bin
 include_comp $profile python-bin
+include_comp $profile autojump
 
 cd ..
 
