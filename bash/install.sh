@@ -27,6 +27,7 @@ include_comp $bashrc etc-bashrc
 include_comp $bashrc local-bin
 include_comp $bashrc cargo
 include_comp $bashrc frc2019
+include_comp $bashrc bazel
 include_comp $bashrc exit-non-interactive
 include_comp $bashrc "history"
 include_comp $bashrc "shopt"
