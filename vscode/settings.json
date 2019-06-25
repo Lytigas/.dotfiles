@@ -19,6 +19,12 @@
         "editor.renderWhitespace": "all",
         "editor.acceptSuggestionOnEnter": "off"
     },
+    "[cpp]": {
+        "editor.formatOnSave": true
+    },
+    "[starlark]": {
+        "editor.formatOnSave": false
+    },
     "window.titleBarStyle": "custom",
     "breadcrumbs.enabled": true,
     "gitlens.currentLine.enabled": false,
