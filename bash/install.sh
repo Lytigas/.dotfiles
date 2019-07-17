@@ -23,11 +23,16 @@ echo "" >> $profile
 cd components
 
 # include components here, in order
+
+# Only do PATH/LD stuff here
 include_comp $bashrc etc-bashrc
 include_comp $bashrc local-bin
 include_comp $bashrc cargo
 include_comp $bashrc frc2019
 include_comp $bashrc bazel
+# include_comp $profile python-bin
+
+# https://unix.stackexchange.com/questions/257571/why-does-bashrc-check-whether-the-current-shell-is-interactive
 include_comp $bashrc exit-non-interactive
 include_comp $bashrc "history"
 include_comp $bashrc "shopt"
@@ -39,12 +44,8 @@ include_comp $bashrc lesspipe
 include_comp $bashrc prompt
 include_comp $bashrc autojump
 
+# No custom behavior for login shells ATM, just defer to bashrc
 include_comp $profile include-bashrc
-include_comp $profile cargo
-include_comp $profile frc2019
-include_comp $profile local-bin
-include_comp $profile python-bin
-include_comp $profile autojump
 
 cd ..
 
