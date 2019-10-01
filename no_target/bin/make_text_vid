@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+tmpfile=$(mktemp /tmp/abc-script.XXXXXX)
+cat - > "$tmpfile"
+
+yes | ffmpeg -f lavfi -i color=c=black:s=640x480:d=1 -vf \
+ "drawtext=fontsize=40: \
+ fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:textfile=$tmpfile" \
+$1
+
+rm $tmpfile
