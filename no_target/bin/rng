@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+from random import randint
+from sys import argv
+
+print(randint(1, int(argv[1])))
