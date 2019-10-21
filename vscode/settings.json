@@ -30,5 +30,6 @@
     "breadcrumbs.enabled": true,
     "gitlens.currentLine.enabled": false,
     "gitlens.hovers.currentLine.over": "line",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "workbench.startupEditor": "newUntitledFile"
 }
