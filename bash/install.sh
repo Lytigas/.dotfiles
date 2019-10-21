@@ -27,7 +27,7 @@ cd components
 # Only do PATH/LD stuff here
 include_comp $bashrc etc-bashrc
 include_comp $bashrc local-bin
-include_comp $bashrc cargo
+include_comp $bashrc rust-path
 include_comp $bashrc nvm
 include_comp $bashrc frc2019
 include_comp $bashrc bazel
@@ -40,6 +40,7 @@ include_comp $bashrc "shopt"
 include_comp $bashrc colors
 include_comp $bashrc aliases
 include_comp $bashrc completion
+include_comp $bashrc rust-completions
 include_comp $bashrc gcc-colors
 include_comp $bashrc lesspipe
 include_comp $bashrc prompt
@@ -47,7 +48,6 @@ include_comp $bashrc autojump
 
 # No custom behavior for login shells ATM, just defer to bashrc
 include_comp $profile include-bashrc
-include_comp $profile cargo
 include_comp $profile frc2019
 include_comp $profile nvm
 include_comp $profile local-bin
