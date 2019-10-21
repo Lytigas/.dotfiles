@@ -1,9 +1,9 @@
 # .dotfiles
 
-My humble pure-bash dotfiles.
+My stuff.
 
 ## Installing
 
 ```console
-git clone ... && cd .dotfiles && chmod +x install.sh && ./install.sh all
+git clone https://github.com/Lytigas/.dotfiles && cd .dotfiles && chmod +x install.sh && ./install.sh all
 ```
