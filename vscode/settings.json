@@ -25,6 +25,7 @@
     "[starlark]": {
         "editor.formatOnSave": false
     },
+    "python.formatting.provider": "black",
     "window.titleBarStyle": "custom",
     "breadcrumbs.enabled": true,
     "gitlens.currentLine.enabled": false,
