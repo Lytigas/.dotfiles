@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 source ../include.sh
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -8,8 +10,8 @@ include_comp() {
 	current_dir="$PWD"
 
     echo "# === Component $2 ===" >> $1
-	cd "$2" && chmod +x "compose.sh" && ./compose.sh >> $1
-	echo "" >> $1
+	cd "$2" && chmod +x "compose.sh" && ./compose.sh >> $1 &&
+	echo "" >> $1 &&
 
     cd "$current_dir"
 }
