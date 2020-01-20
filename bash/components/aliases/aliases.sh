@@ -11,3 +11,5 @@ alias open='xdg-open'
 function epen {
     open "$1" && exit
 }
+
+alias rcode='code ~/projects/team114/robot-code/c2020'
