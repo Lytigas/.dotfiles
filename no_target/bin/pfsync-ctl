@@ -11,10 +11,12 @@ from subprocess import run
 from pathlib import Path
 
 DEFAULT_PATH = Path.home() / 'Documents' / 's3'
+# DEFAULT_PATH = Path("/media/s3-personal-files")
 DEFAULT_PASSWD_FILE = Path.home() / '.passwd-s3fs'
 DEFAULT_CACHE_DIR = "/var/tmp/s3fs_cache"
 
 def start(args):
+    args.path.mkdir(exist_ok=True)
     ahbe_conf = Path(__file__).resolve().parent.parent / 's3fs' / 'ahbe_conf'
     run([
         's3fs', 'jh-personal-files', args.path,
