@@ -12,10 +12,16 @@ from pathlib import Path
 
 DEFAULT_PATH = Path.home() / 'Documents' / 's3'
 DEFAULT_PASSWD_FILE = Path.home() / '.passwd-s3fs'
+DEFAULT_CACHE_DIR = "/var/tmp/s3fs_cache"
 
 def start(args):
     ahbe_conf = Path(__file__).resolve().parent.parent / 's3fs' / 'ahbe_conf'
-    run(['s3fs', 'jh-personal-files', args.path, '-o', 'passwd_file={}'.format(args.password_file), '-o', 'ahbe_conf={}'.format(ahbe_conf)])
+    run([
+        's3fs', 'jh-personal-files', args.path,
+        '-o', 'passwd_file={}'.format(args.password_file),
+        '-o', 'ahbe_conf={}'.format(ahbe_conf),
+        '-o', 'use_cache={}'.format(DEFAULT_CACHE_DIR)
+    ])
 
 def stop(args):
     run(['fusermount', '-u', args.path])
@@ -24,7 +30,7 @@ def ls(_args):
     run("mount | grep s3fs", shell=True)
 
 def clear_cache(_args):
-    print("Not yet implemented. Can't find where the cache is stored last I checked.")
+    run("rm -r {}".format(DEFAULT_CACHE_DIR))
 
 def configure(_args):
     import re
