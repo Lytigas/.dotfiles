@@ -1,3 +1,12 @@
+# delta color procedure:
+# Find initial colors by adding default red/green delta colors (#012800 and #340001) to terminal background color
+# This is done via simple RGB addition
+# The result is used for the emphasis color
+# Darken Value channel by 12 to get ordinary color
+[core]
+	pager = delta --highlight-removed --commit-style plain --hunk-style plain --tabs 4 --keep-plus-minus-markers --dark --plus-color="#112611" --plus-emph-color="#1f461e" --minus-color="#331313" --minus-emph-color="#521e1f" --theme='dimmed-monokai'
+[interactive]
+	diffFilter = delta --color-only  --dark --plus-color="#112611" --plus-emph-color="#1f461e" --minus-color="#331313" --minus-emph-color="#521e1f" --theme='dimmed-monokai'
 [rerere]
 	enabled = true
 [user]
