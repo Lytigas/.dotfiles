@@ -31,5 +31,7 @@
   "editor.formatOnSave": true,
   "workbench.startupEditor": "newUntitledFile",
   "editor.largeFileOptimizations": false,
-  "task.autoDetect": "off"
+  "task.autoDetect": "off",
+  "git.githubAuthentication": false,
+  "git.terminalAuthentication": false,
 }
