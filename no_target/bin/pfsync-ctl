@@ -19,7 +19,7 @@ def start(args):
     args.path.mkdir(exist_ok=True)
     ahbe_conf = Path(__file__).resolve().parent.parent / 's3fs' / 'ahbe_conf'
     run([
-        's3fs', 'jh-personal-files', args.path,
+        's3fs', 'jh-personal-files2', args.path,
         '-o', 'passwd_file={}'.format(args.password_file),
         '-o', 'ahbe_conf={}'.format(ahbe_conf),
         '-o', 'use_cache={}'.format(DEFAULT_CACHE_DIR)
