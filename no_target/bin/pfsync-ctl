@@ -10,85 +10,132 @@ import sys
 from subprocess import run
 from pathlib import Path
 
-DEFAULT_PATH = Path.home() / 'Documents' / 's3'
+DEFAULT_PATH = Path.home() / "Documents" / "s3"
 # DEFAULT_PATH = Path("/media/s3-personal-files")
-DEFAULT_PASSWD_FILE = Path.home() / '.passwd-s3fs'
+DEFAULT_PASSWD_FILE = Path.home() / ".passwd-s3fs"
 DEFAULT_CACHE_DIR = "/var/tmp/s3fs_cache"
+
 
 def start(args):
     args.path.mkdir(exist_ok=True)
-    ahbe_conf = Path(__file__).resolve().parent.parent / 's3fs' / 'ahbe_conf'
-    run([
-        's3fs', 'jh-personal-files2', args.path,
-        '-o', 'passwd_file={}'.format(args.password_file),
-        '-o', 'ahbe_conf={}'.format(ahbe_conf),
-        '-o', 'use_cache={}'.format(DEFAULT_CACHE_DIR)
-    ])
+    ahbe_conf = Path(__file__).resolve().parent.parent / "s3fs" / "ahbe_conf"
+    run(
+        [
+            "s3fs",
+            "jh-personal-files2",
+            args.path,
+            "-o",
+            "passwd_file={}".format(args.password_file),
+            "-o",
+            "ahbe_conf={}".format(ahbe_conf),
+            "-o",
+            "use_cache={}".format(DEFAULT_CACHE_DIR),
+        ]
+    )
+
 
 def stop(args):
-    run(['fusermount', '-u', args.path])
+    run(["fusermount", "-u", args.path])
+
 
 def ls(_args):
     run("mount | grep s3fs", shell=True)
 
+
 def clear_cache(_args):
     run("rm -r {}".format(DEFAULT_CACHE_DIR))
 
+
 def configure(_args):
     import re
+
     # manually guide user through the process
     if DEFAULT_PASSWD_FILE.is_file():
         print("Default password file found.")
     else:
-        print("Create default password file at {}. (Enter to continue)".format(DEFAULT_PASSWD_FILE))
+        print(
+            "Create default password file at {}. (Enter to continue)".format(
+                DEFAULT_PASSWD_FILE
+            )
+        )
         input()
 
     updatedb_conf = Path("/etc/updatedb.conf")
     print(updatedb_conf.read_text())
     if not updatedb_conf.is_file():
-        print("/etc/updatedb.conf not found. Make sure updatedb isn't installed on this system. (Enter to continue)")
+        print(
+            "/etc/updatedb.conf not found. Make sure updatedb isn't installed on this system. (Enter to continue)"
+        )
         input()
-    elif not re.search('^PRUNEFS="(?:[\w.]+ )*fuse\.s3fs[ "]', updatedb_conf.read_text(), flags=re.MULTILINE):
-        print("/etc/updatedb.conf does not contain fuse.s3fs in PRUNEFS. Manually fix and continue. (Enter to continue)")
+    elif not re.search(
+        '^PRUNEFS="(?:[\w.]+ )*fuse\.s3fs[ "]',
+        updatedb_conf.read_text(),
+        flags=re.MULTILINE,
+    ):
+        print(
+            "/etc/updatedb.conf does not contain fuse.s3fs in PRUNEFS. Manually fix and continue. (Enter to continue)"
+        )
         input()
     else:
         print("Found 'fuse.s3fs' in /etc/updatedb.conf PRUNEFS.")
 
+
 def completions(args):
     from textwrap import dedent
-    print(dedent("""\
-        complete -W "{}" pfsync-ctl"""
-        .format(' '.join(args.cmd_list))))
+
+    print(
+        dedent(
+            """\
+        complete -W "{}" pfsync-ctl""".format(
+                " ".join(args.cmd_list)
+            )
+        )
+    )
+
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(prog='pfsync-ctl')
-    subparsers = parser.add_subparsers(title='subcommands')
+    parser = argparse.ArgumentParser(prog="pfsync-ctl")
+    subparsers = parser.add_subparsers(title="subcommands")
 
-    start_parser = subparsers.add_parser('start', help='initialize FUSE')
-    start_parser.add_argument('path', metavar="PATH", type=str, nargs="?", default=DEFAULT_PATH)
-    start_parser.add_argument('--password-file', metavar="FILE", type=str, nargs="?", default=DEFAULT_PASSWD_FILE)
+    start_parser = subparsers.add_parser("start", help="initialize FUSE")
+    start_parser.add_argument(
+        "path", metavar="PATH", type=str, nargs="?", default=DEFAULT_PATH
+    )
+    start_parser.add_argument(
+        "--password-file",
+        metavar="FILE",
+        type=str,
+        nargs="?",
+        default=DEFAULT_PASSWD_FILE,
+    )
     start_parser.set_defaults(func=start)
 
-    stop_parser = subparsers.add_parser('stop', help='end FUSE')
-    stop_parser.add_argument('path', metavar="PATH", type=str, nargs="?", default=DEFAULT_PATH)
+    stop_parser = subparsers.add_parser("stop", help="end FUSE")
+    stop_parser.add_argument(
+        "path", metavar="PATH", type=str, nargs="?", default=DEFAULT_PATH
+    )
     stop_parser.set_defaults(func=stop)
 
-    list_parser = subparsers.add_parser('list', help='list active s3 FUSE mountpoints')
+    list_parser = subparsers.add_parser("list", help="list active s3 FUSE mountpoints")
     list_parser.set_defaults(func=ls)
 
-    clear_cache_parser = subparsers.add_parser('clear_cache', help='clear s3fs cache')
+    clear_cache_parser = subparsers.add_parser("clear_cache", help="clear s3fs cache")
     clear_cache_parser.set_defaults(func=clear_cache)
 
-    configure_parser = subparsers.add_parser('configure', help='configure system for optimal performance')
+    configure_parser = subparsers.add_parser(
+        "configure", help="configure system for optimal performance"
+    )
     configure_parser.set_defaults(func=configure)
 
-    completions_parser = subparsers.add_parser('completions', help='print script for basic bash completions')
+    completions_parser = subparsers.add_parser(
+        "completions", help="print script for basic bash completions"
+    )
     completions_parser.set_defaults(func=completions)
 
     args = parser.parse_args(sys.argv[1:])
     # add a list of commands for completions
     args.cmd_list = [i for i in subparsers.choices]
-    if hasattr(args, 'func'):
+    if hasattr(args, "func"):
         args.func(args)
     else:
         parser.print_usage()
