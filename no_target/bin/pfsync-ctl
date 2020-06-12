@@ -30,6 +30,8 @@ def start(args):
             "ahbe_conf={}".format(ahbe_conf),
             "-o",
             "use_cache={}".format(DEFAULT_CACHE_DIR),
+            "-o",
+            "umask=0117,uid=1000,gid=1000",
         ]
     )
 
