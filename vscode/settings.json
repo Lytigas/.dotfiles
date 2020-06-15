@@ -26,7 +26,7 @@
     "editor.formatOnSave": false
   },
   "python.formatting.provider": "black",
-  "window.titleBarStyle": "custom",
+  "window.titleBarStyle": "native",
   "breadcrumbs.enabled": true,
   "editor.formatOnSave": true,
   "workbench.startupEditor": "newUntitledFile",
