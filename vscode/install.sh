@@ -18,7 +18,7 @@ $cmd DavidAnson.vscode-markdownlint
 # toml
 $cmd bungcip.better-toml
 # general
-$cmd robertohuertasm.vscode-icons
+$cmd vscode-icons-team.vscode-icons
 
 echo "Symlinking vscode configs"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
