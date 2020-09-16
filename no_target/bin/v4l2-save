@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+
+import argparse
+import sys
+from subprocess import run
+
+
+def eprint(*args, **kwargs):
+    print(*args, **kwargs, file=sys.stderr)
+
+
+def main(cli_args):
+    parser = argparse.ArgumentParser(prog="v4l2-save")
+    parser.add_argument("--save", "-s", action="store_true")
+    parser.add_argument("--load", "-l", action="store_true")
+    parser.add_argument("camera", type=str)
+    parser.add_argument("file", type=str)
+    args = parser.parse_args(cli_args[1:])
+    if bool(args.save) == bool(args.load):
+        eprint("Must specify one of --save or --load")
+        return 1
+
+    if args.save:
+        with open(args.file, "w") as f:
+            run(["v4l2-ctl", "-d", args.camera, "-l"], stdout=f, check=True)
+        return 0
+
+    if args.load:
+        ctls = []
+        with open(args.file, "r") as f:
+            for line in f.readlines():
+                if ":" not in line:
+                    continue
+                words = line.strip().split()
+                name = words[0]
+                value = None
+                for word in words:
+                    if word.startswith("value="):
+                        value = word[len("value=") :]
+                if not value:
+                    raise ValueError("Could not find value for in line", line)
+                ctls.append((name, value))
+        for name, value in ctls:
+            eprint("Setting", name, "=", value)
+        ctl_string = ",".join(name + "=" + value for name, value in ctls)
+        run(["v4l2-ctl", "-d", args.camera, "--set-ctrl=" + ctl_string], check=True)
+        return 0
+
+    return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))
