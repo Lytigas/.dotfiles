@@ -34,4 +34,5 @@
   "task.autoDetect": "off",
   "git.githubAuthentication": false,
   "git.terminalAuthentication": false,
+  "rust-analyzer.inlayHints.typeHints": false
 }
