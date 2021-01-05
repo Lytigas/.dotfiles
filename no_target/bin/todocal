@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+CALENDAR=${CALENDAR:-Todo Scheduling}
+
+
+# choose the defualt time to be the next reasonable 5pm
+current_time=$(date +%H:%M)
+if [[ $current_time > "16:00" ]]
+then
+    default_time="tomorrow 5pm"
+else
+    default_time="today 5pm"
+fi
+
+
+read -p "Event Title: " title
+if [ -z "$title" ]
+then
+    echo "Title needed"
+    exit 1
+fi
+read -p "Duration: " duration
+duration=${duration:-30}
+read -p "Time: " selected_time
+selected_time=${selected_time:-$default_time}
+selected_time=$(date --date="$selected_time" +%D\ %H:%M)
+read -p "Desc: " desc
+
+set -x
+gcalcli --calendar "$CALENDAR" \
+    add \
+    --title "$title" \
+    --when "$selected_time" \
+    --duration "$duration" \
+    --description "$desc"
+set +x
