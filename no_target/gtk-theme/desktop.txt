@@ -1,0 +1,6 @@
+DE: Mate (Ubuntu MATE)
+In Appearence Preferences:
+Controls: Adapta-Nokto
+Window Border: Adapta (same as Nokto based on looks)
+Icons: Numix Circle (regular)
+Pointer: Default
