@@ -40,13 +40,24 @@ def main(cli_args):
                 if not value:
                     raise ValueError("Could not find value for in line", line)
                 ctls.append((name, value))
-        for name, value in ctls:
-            eprint("Setting", name, "=", value)
-        ctl_string = ",".join(name + "=" + value for name, value in ctls)
-        run(["v4l2-ctl", "-d", args.camera, "--set-ctrl=" + ctl_string], check=True)
+        split_set_ctl_list(ctls, args.camera)
         return 0
-
     return 1
+
+
+def split_set_ctl_list(ctls, camera):
+    # anything with "auto" in the name probably needs to be set before the other setting
+    auto_ctls = [c for c in ctls if "auto" in c[0]]
+    reg_ctls = [c for c in ctls if c not in auto_ctls]
+    set_ctl_list(auto_ctls, camera)
+    set_ctl_list(reg_ctls, camera)
+
+
+def set_ctl_list(ctls, camera):
+    for name, value in ctls:
+        eprint("Setting", name, "=", value)
+    ctl_string = ",".join(name + "=" + value for name, value in ctls)
+    run(["v4l2-ctl", "-d", camera, "--set-ctrl=" + ctl_string], check=True)
 
 
 if __name__ == "__main__":
