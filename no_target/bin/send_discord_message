@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+COMM_FILE=/tmp/discord_file_message
+ACK=$(printf "\x06")
+
+function get_ms(){
+  date +%s%N | cut -b1-13
+}
+
+function show_err {
+  if [ ! -z ${NOTIFY+x} ]
+  then
+    notify-send "$1" -u critical -t 8000
+  fi
+  if [ -z ${QUIET+x} ]
+  then
+    echo "$1"
+  fi
+}
+
+function show_succ {
+  if [ ! -z ${NOTIFY+x} ]
+  then
+    notify-send "$1" -t 3000
+  fi
+  if [ -z ${QUIET+x} ]
+  then
+    echo "$1"
+  fi
+}
+
+
+POSITIONAL=()
+while [[ $# -gt 0 ]]; do
+  key="$1"
+
+  case $key in
+    --notify)
+      NOTIFY="1"
+      shift
+      ;;
+    --quiet)
+      QUIET="1"
+      shift # past argument
+      ;;
+    *)
+      POSITIONAL+=("$1") # save it in an array for later
+      shift # past argument
+      ;;
+  esac
+done
+set -- "${POSITIONAL[@]}" # restore positional parameters
+
+# Communicate via file
+printf "$1\x02$2\x03" > "$COMM_FILE"
+
+# Wait for response with timeout
+TIMEOUT_MS=2500
+START=$(get_ms)
+while true
+do
+  if [[ $(head -c 1 "$COMM_FILE") = $ACK ]]
+  then
+    if grep -i success < "$COMM_FILE" > /dev/null
+    then
+        show_succ "Message sent successfully."
+        exit 0
+    else
+        show_err "Failed to send message."
+        exit 1
+    fi
+  fi
+
+  if (( $(get_ms) - $START > $TIMEOUT_MS ))
+  then
+    break
+  fi
+
+  sleep 0.25
+done
+# Timeout expired if we break
+show_err "No response after ${TIMEOUT_MS}ms. Is Discord (and the plugin) running?"
+exit 2
