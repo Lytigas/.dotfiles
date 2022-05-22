@@ -1,7 +1,6 @@
 {
   "workbench.iconTheme": "vscode-icons",
   "workbench.colorTheme": "Monokai Dimmed",
-  "window.zoomLevel": 0,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
@@ -55,5 +54,8 @@
     "terminal.ansiBrightMagenta": "#d670dc",
     "terminal.ansiBrightCyan": "#29b8db",
     "terminal.ansiBrightWhite": "#e5e5e5"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
