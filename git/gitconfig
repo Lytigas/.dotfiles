@@ -1,12 +1,34 @@
-# delta color procedure:
-# Find initial colors by adding default red/green delta colors (#012800 and #340001) to terminal background color
-# This is done via simple RGB addition
-# The result is used for the emphasis color
-# Darken Value channel by 12 to get ordinary color
 [core]
-	pager = delta --highlight-removed --commit-style plain --hunk-style plain --tabs 4 --keep-plus-minus-markers --dark --plus-color="#112611" --plus-emph-color="#1f461e" --minus-color="#331313" --minus-emph-color="#521e1f" --theme='dimmed-monokai'
+	pager = delta
 [interactive]
-	diffFilter = delta --color-only  --dark --plus-color="#112611" --plus-emph-color="#1f461e" --minus-color="#331313" --minus-emph-color="#521e1f" --theme='dimmed-monokai'
+	diffFilter = delta --color-only
+[delta]
+    features = decorations
+	# side-by-side = true
+	tabs = 4
+	navigate = true
+	syntax-theme = dimmed-monokai
+	# TODO: vscode protocol file links?
+[delta "decorations"]
+    commit-style = raw
+    file-style = blue bold
+    hunk-header-decoration-style = omit
+    hunk-header-file-style = blue
+    hunk-header-line-number-style = dim blue
+    hunk-header-style = file line-number syntax
+	# delta color procedure:
+	# Find initial colors by adding default red/green delta colors (#012800 and #340001) to terminal background color
+	# This is done via simple RGB addition
+	# The result is used for the emphasis color
+	# Darken Value channel by 12 to get ordinary color
+	plus-non-emph-style = syntax "#112611"
+	plus-style = syntax "#1f461e"
+	plus-emph-style = syntax "#1f461e"
+	minus-non-emph-style = syntax "#331313"
+	minus-style = syntax "#521e1f"
+	minus-emph-style = syntax "#521e1f"
+[diff]
+    colorMoved = default
 [rerere]
 	enabled = true
 [user]
