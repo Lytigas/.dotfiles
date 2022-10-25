@@ -5,6 +5,7 @@
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "editor.minimap.enabled": false,
+  "editor.bracketPairColorization.enabled": false,
   "workbench.editor.enablePreview": false,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.rulers": [100],
@@ -14,7 +15,7 @@
   },
   "[markdown]": {
     "editor.formatOnSave": true,
-    "editor.wordWrap": "on",
+    "editor.wordWrap": "bounded",
     "editor.renderWhitespace": "all",
     "editor.acceptSuggestionOnEnter": "off"
   },
@@ -34,7 +35,6 @@
   "task.autoDetect": "off",
   "git.githubAuthentication": false,
   "git.terminalAuthentication": false,
-  "rust-analyzer.inlayHints.typeHints": false,
   "workbench.colorCustomizations": {
     "terminal.background": "#1e1e1e",
     "terminal.foreground": "#cccccc",
@@ -55,7 +55,20 @@
     "terminal.ansiBrightCyan": "#29b8db",
     "terminal.ansiBrightWhite": "#e5e5e5"
   },
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "workbench.editor.untitled.hint": "hidden",
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "rust-analyzer.inlayHints.typeHints.enable": false,
+  "vscode-neovim.neovimExecutablePaths.linux": ""
 }
