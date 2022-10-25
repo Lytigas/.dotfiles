@@ -65,6 +65,7 @@ include_comp $bashrc python-bin
 include_comp $bashrc autojump
 include_comp $bashrc rust-path
 include_comp $bashrc bazel
+include_comp $bashrc opam
 
 echo '' >> $bashrc
 echo 'fi # end once-set env vars' >> $bashrc
