@@ -2,4 +2,4 @@ laptop:
 gtk: osx-arc-darker
 icons: paper
 font: noto sans bold
-mono font: "monospace" (probably ubuntu)
+mono font: "monospace" (DejaVu sans Mono)
