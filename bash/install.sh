@@ -58,6 +58,7 @@ echo '' >> $bashrc
 echo 'export ENV_VAR_SET_VALUE="$ENV_VAR_BEEN_SET_SENTINEL"' >> $bashrc
 echo '' >> $bashrc
 
+include_comp $bashrc editor
 include_comp $bashrc frc2019
 include_comp $bashrc nvm
 include_comp $bashrc local-bin

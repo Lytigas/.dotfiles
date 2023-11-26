@@ -8,13 +8,13 @@
   "editor.bracketPairColorization.enabled": false,
   "workbench.editor.enablePreview": false,
   "diffEditor.ignoreTrimWhitespace": false,
-  "editor.rulers": [100],
+  "editor.rulers": [80, 100],
   "[rust]": {
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true
   },
   "[markdown]": {
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.wordWrap": "bounded",
     "editor.renderWhitespace": "all",
     "editor.acceptSuggestionOnEnter": "off"
