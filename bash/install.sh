@@ -63,7 +63,6 @@ include_comp $bashrc frc2019
 include_comp $bashrc nvm
 include_comp $bashrc local-bin
 include_comp $bashrc python-bin
-include_comp $bashrc autojump
 include_comp $bashrc rust-path
 include_comp $bashrc bazel
 include_comp $bashrc opam
@@ -76,6 +75,8 @@ include_comp $bashrc etc-bashrc
 
 # At this point, we're done with things relevant to non-interactive use
 include_comp $bashrc exit-non-interactive
+include_comp $bashrc create-temp-homedir
+include_comp $bashrc autojump
 include_comp $bashrc lesspipe
 include_comp $bashrc "history"
 include_comp $bashrc "shopt"
